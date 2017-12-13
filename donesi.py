@@ -47,5 +47,3 @@ for price in range(initalPrice - priceRange, initalPrice + 1):
     print (str(price) + ":")
     for solution in combinations[price]:
       print ("    " + str(solution))
-
-
