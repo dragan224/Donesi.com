@@ -53,7 +53,7 @@ for item in items:
       for combo in combinations[oldPrice]:
         combinations[price].append(combo + [item[1]])
 
-for price in range(initalPrice - priceRange, initalPrice + 1):
+for price in range(max(1, initalPrice - priceRange), initalPrice + 1):
   if len(combinations[price]) > 0:
     print (str(price) + ":")
     for solution in combinations[price]:
