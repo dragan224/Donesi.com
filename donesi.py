@@ -16,12 +16,25 @@ def ExtractItems(raw_data):
   names = []
 
   patternPrice = re.compile(r'(\<dd class\=\"price\" itemprop=\"price\"\>)(\d+,?\d+)')
+
   for match in re.findall(patternPrice, raw_data):
     prices.append(int(match[1].replace(',', '')))
 
-  patternName = re.compile(r'(data-toggle=\"modal\" itemprop=\"url\">)([A-Za-zČĆĐŠŽžšđćč ]+)')
+  if not prices:
+    patternPrice2 = re.compile(r'(content=\")(\d+,?\d+)([A-Za-z0-9\.\+ ]*\" itemprop=\"price\")')
+    for match in re.findall(patternPrice2, raw_data):
+      prices.append(int(match[1].replace(',', '')))
+
+  patternName = re.compile(r'(.php\"[ ]*itemprop=\"url\">)([A-Za-zČĆĐŠŽžšđćč0-9,\.\!\? ]+)')
   for match in re.findall(patternName, raw_data):
+    print (match)
     names.append(match[1])
+
+  if not names:
+    patternName2 = re.compile(r'(modal\"[ ]*itemprop=\"url\">)([A-Za-zČĆĐŠŽžšđćč0-9,\.\!\? ]+)')
+    for match in re.findall(patternName2, raw_data):
+      print (match)
+      names.append(match[1])
 
   return list(zip(prices, names))
 
