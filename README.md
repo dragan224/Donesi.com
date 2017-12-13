@@ -5,7 +5,7 @@ A python3 script that takes (url of donesi restaurant, price, range) as argument
 
 Example usage:
 ```
-python3 donesi.py https://www.donesi.com/beograd/lat/pizzahaos-dostava-147.php 300 10 
+python3 donesi.py https://www.donesi.com/beograd/lat/thepizzaplace-dostava-326.php 600 50
 ```
 
 Example output:
