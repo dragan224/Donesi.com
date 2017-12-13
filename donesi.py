@@ -9,7 +9,7 @@ import urllib.request
 def GetSourceFile(url):
   request = urllib.request.Request(url)
   response = urllib.request.urlopen(request)
-  return response.read().decode("utf8").split("<h3>Pića</h3>")[0]
+  return response.read().decode("utf8").split("<h3>Pića</h3>")[0].split("<h3>Piće</h3>")[0]
 
 def ExtractItems(raw_data):
   prices = []
