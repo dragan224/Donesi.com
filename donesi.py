@@ -27,13 +27,11 @@ def ExtractItems(raw_data):
 
   patternName = re.compile(r'(.php\"[ ]*itemprop=\"url\">)([A-Za-zČĆĐŠŽžšđćč0-9,\.\!\? ]+)')
   for match in re.findall(patternName, raw_data):
-    print (match)
     names.append(match[1])
 
   if not names:
     patternName2 = re.compile(r'(modal\"[ ]*itemprop=\"url\">)([A-Za-zČĆĐŠŽžšđćč0-9,\.\!\? ]+)')
     for match in re.findall(patternName2, raw_data):
-      print (match)
       names.append(match[1])
 
   return list(zip(prices, names))
