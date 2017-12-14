@@ -40,6 +40,15 @@ def ExtractItems(raw_data):
 
   return list(zip(prices, names))
 
+def safeprint(s):
+  try:
+    print(s)
+  except UnicodeEncodeError:
+    if sys.version_info >= (3,):
+      print(s.encode('utf8').decode(sys.stdout.encoding))
+    else:
+      print(s.encode('utf8'))
+
 if __name__== "__main__":
   assert len(sys.argv) == 4, "Command line arguments are url, price, and range."
 
@@ -60,6 +69,6 @@ if __name__== "__main__":
 
   for price in range(max(1, initalPrice - priceRange), initalPrice + 1):
     if len(combinations[price]) > 0:
-      print (str(price) + ":")
+      safeprint (str(price) + ":")
       for solution in combinations[price]:
-        print ("    " + str(solution))
+        safeprint ("    " + str(solution))
